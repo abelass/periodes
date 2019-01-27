@@ -1,0 +1,37 @@
+[(#SET{defaut_tri,#ARRAY{
+	titre,1,
+	date,-1,
+	id_periode,1,
+	points,-1
+}})]<B_liste_periodes>
+#ANCRE_PAGINATION
+<div class="liste-objets periodes">
+<table class="spip liste">
+	[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{periode:info_1_periode,periode:info_nb_periodes}})</strong></caption>]
+	<thead>
+		<tr class="first_row">
+			<th class="picto" scope="col"></th>
+			<th class="titre" scope="col">[(#TRI{titre,<:periode:champ_titre_label:>,ajax})]</th>
+			<th class="date" scope="col">[(#TRI{date,<:date:>,ajax})]</th> 
+			<th class="id" scope="col">[(#TRI{id_periode,<:info_numero_abbreviation:>,ajax})]</th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_periodes(PERIODES){id_mot?}{id_auteur?}{where?}{recherche?}{tri #ENV{par,num titre},#GET{defaut_tri}}{par titre}{pagination #ENV{nb,10}}>
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
+			<td class="picto">[(#CHEMIN_IMAGE{periode-16.png}|balise_img)]</td>
+			<td class="titre principale">[(#LOGO_PERIODE|image_reduire{20,26})]<a href="[(#ID_PERIODE|generer_url_entite{periode})]" title="<:info_numero_abbreviation|attribut_html:> #ID_PERIODE">[(#RANG). ]#TITRE</a></td>
+			<td class="date secondaire">[(#DATE|affdate_jourcourt)]</td> 
+			<td class="id">[(#AUTORISER{modifier,periode,#ID_PERIODE}|?{
+				<a href="[(#URL_ECRIRE{periode_edit,id_periode=#ID_PERIODE})]">#ID_PERIODE</a>,
+				#ID_PERIODE
+			})]</td>
+		</tr>
+	</BOUCLE_liste_periodes>
+	</tbody>
+</table>
+[<p class="pagination">(#PAGINATION{prive})</p>]
+</div>
+</B_liste_periodes>[
+<div class="liste-objets periodes caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
+]<//B_liste_periodes>
