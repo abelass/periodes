@@ -69,12 +69,41 @@ function periodes_declarer_tables_objets_sql($tables) {
 		),
 		'titre' => 'titre AS titre, "" AS lang',
 		'date' => 'date',
-		'champs_editables'  => array('jour', 'mois', 'annee'),
-		'champs_versionnes' => array('jour', 'mois', 'annee'),
-		'rechercher_champs' => array(),
+		'champs_editables'  => array(
+			'titre',
+			'descriptif',
+			'type',
+			'criteres',
+			'operateur',
+			'operateur_2',
+			'date_debut',
+			'date_fin',
+			'jour_debut',
+			'jour_fin',
+			'jour_nombre',
+			'jour', 
+			'mois', 
+			'annee'),
+		'champs_versionnes' => array(
+			'titre',
+			'descriptif',
+			'type',
+			'criteres',
+			'operateur',
+			'operateur_2',
+			'date_debut',
+			'date_fin',
+			'jour_debut',
+			'jour_fin',
+			'jour_nombre',
+			'jour', 
+			'mois', 
+			'annee'),
+		'rechercher_champs' => array(
+			"titre" => 8,
+			"descriptif" => 5,
+		),
 		'tables_jointures'  => array(),
-
-
 	);
 
 	return $tables;
