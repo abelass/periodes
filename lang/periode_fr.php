@@ -12,11 +12,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'ajouter_lien_periode' => 'Ajouter cette période',
 
 	// C
+	'champ_annee_label' => 'Année :',
 	'champ_criteres_label' => 'Criteres :',
+	'champ_date_complete_label' => 'Date complète',
 	'champ_descriptif_label' => 'Descriptif :',
 	'champ_jour_debut_label' => 'Jour debut :',
 	'champ_jour_fin_label' => 'Jour fin :',
+	'champ_jour_label' => 'Jour :',
 	'champ_jour_nombre_label' => 'Jour nombre :',
+	'champ_mois_label' => 'Mois :',
 	'champ_operateur_2_label' => 'Operateur 2 :',
 	'champ_operateur_label' => 'Operateur :',
 	'champ_titre_label' => 'Titre',
@@ -25,6 +29,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'choix_exclu_label' => 'Exclues (Période ne contient aucune date du contexte)',
 	'choix_specifique_label' => 'Choix spécifique',
 	'confirmer_supprimer_periode' => 'Confirmez-vous la suppression de cette période ?',
+
+	// E
+	'explication_date_complete_label' => 'Si non, permet de chosir jour, mois et année séparément. Util par example pour définir une période indépendament de l\'année',
 
 	// I
 	'icone_creer_periode' => 'Créer une période',

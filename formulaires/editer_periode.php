@@ -25,6 +25,19 @@ function formulaires_editer_periode_saisies_dist() {
 		$jours_semaines[] = _T('spip:date_jour_' . $jour);
 	}
 
+	// Les jours de mois.
+	$jours = [];
+	for ($i = 1; $i <= 31; $i++) {
+		$jours[] = $i;
+	}
+
+	// Les mopis d'une année.
+	$mois = [];
+	for ($i = 1; $i <= 12; $i++) {
+		$mois[] = $i;
+	}
+
+
 	$operateurs = array(
 		htmlspecialchars('==') => '==',
 		htmlspecialchars('!=') => '!=',
@@ -92,11 +105,22 @@ function formulaires_editer_periode_saisies_dist() {
 			)
 		),*/
 		array(
+			'saisie' => 'oui_non',
+			'options' => array(
+				'obligatoire' => 'oui',
+				'nom' => 'date_complete',
+				'label' => _T('periode:champ_date_complete_label'),
+				'explication' => _T('periode:explication_date_complete_label'),
+				'afficher_si' => '@type@ == "date"',
+				'defaut' => 'on',
+			),
+		),
+		array(
 			'saisie' => 'date',
 			'options' => array(
 				'nom' => 'date_debut',
 				'label' => _T('dates_outils:champ_date_debut_label'),
-				'afficher_si' => '@type@ == "date"',
+				'afficher_si' => '@type@ == "date" && @date_complete@ == "on"',
 			)
 		),
 		/*array(
@@ -113,9 +137,80 @@ function formulaires_editer_periode_saisies_dist() {
 			'options' => array(
 				'nom' => 'date_fin',
 				'label' => _T('dates_outils:champ_date_fin_label'),
-				'afficher_si' => '@type@ == "date"',
+				'afficher_si' => '@type@ == "date" && @date_complete@ == "on"',
 			)
 		),
+		[
+			'saisie' => 'fieldset',
+			'options' => array(
+				'nom' => 'date_debut_selection',
+				'label' => _T('dates_outils:champ_date_debut_label'),
+				'afficher_si' => '@type@ == "date" && @date_complete@ == ""',
+
+			),
+			'saisies' => [
+				[
+					'saisie' => 'selection',
+					'options' => [
+						'nom' => 'date_debut_jour',
+						'label' => _T('periode:champ_jour_label'),
+						'data' => $jours,
+						'option_intro' => '*',
+					]
+				],
+				[
+					'saisie' => 'selection',
+					'options' => [
+						'nom' => 'date_debut_mois',
+						'label' => _T('periode:champ_mois_label'),
+						'data' => $mois,
+						'option_intro' => '*',
+					]
+				],
+				[
+					'saisie' => 'input',
+					'options' => [
+						'nom' => 'date_debut_annee',
+						'label' => _T('periode:champ_annee_label'),
+					]
+				],
+			],
+		],
+		[
+			'saisie' => 'fieldset',
+			'options' => array(
+				'nom' => 'date_fin_selection',
+				'label' => _T('dates_outils:champ_date_fin_label'),
+				'afficher_si' => '@type@ == "date" && @date_complete@ == ""',
+			),
+			'saisies' => [
+				[
+					'saisie' => 'selection',
+					'options' => [
+						'nom' => 'date_fin_jour',
+						'label' => _T('periode:champ_jour_label'),
+						'data' => $jours,
+						'option_intro' => '*',
+					]
+				],
+				[
+					'saisie' => 'selection',
+					'options' => [
+						'nom' => 'date_fin_mois',
+						'label' => _T('periode:champ_mois_label'),
+						'data' => $mois,
+						'option_intro' => '*',
+					]
+				],
+				[
+					'saisie' => 'input',
+					'options' => [
+						'nom' => 'date_fin_annee',
+						'label' => _T('periode:champ_annee_label'),
+					]
+				],
+			],
+		],
 		array(
 			'saisie' => 'selection',
 			'options' => array(
