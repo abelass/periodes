@@ -22,7 +22,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  * - créer la structure SQL,
  * - insérer du pre-contenu,
  * - installer des valeurs de configuration,
- * - mettre à jour la structure SQL 
+ * - mettre à jour la structure SQL
  *
  * @param string $nom_meta_base_version
  *     Nom de la meta informant de la version du schéma de données du plugin installé dans SPIP
@@ -32,9 +32,18 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 **/
 function periodes_upgrade($nom_meta_base_version, $version_cible) {
 	$maj = array();
+	$maj['1.0.1']  = array(
+		array('maj_tables', array('spip_periodes')),
+		array('sql_alter','TABLE spip_periodes DROP COLUMN jour'),
+		array('sql_alter','TABLE spip_periodes DROP COLUMN mois'),
+		array('sql_alter','TABLE spip_periodes DROP COLUMN annee'),
+	);
+		$maj['1.1.0']  = array(
+		array('maj_tables', array('spip_periodes')),
+	);
 	# quelques exemples
 	# (que vous pouvez supprimer !)
-	# 
+	#
 	# $maj['create'] = array(array('creer_base'));
 	#
 	# include_spip('inc/config')
@@ -60,11 +69,11 @@ function periodes_upgrade($nom_meta_base_version, $version_cible) {
 
 /**
  * Fonction de désinstallation du plugin Périodes.
- * 
+ *
  * Vous devez :
  *
  * - nettoyer toutes les données ajoutées par le plugin et son utilisation
- * - supprimer les tables et les champs créés par le plugin. 
+ * - supprimer les tables et les champs créés par le plugin.
  *
  * @param string $nom_meta_base_version
  *     Nom de la meta informant de la version du schéma de données du plugin installé dans SPIP

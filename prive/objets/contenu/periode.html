@@ -19,7 +19,7 @@
 	<span dir="#LANG_DIR" class="#EDIT{criteres} criteres">[(#VAL{periode:choix_#CRITERES|concat{_label}}|_T)]</span>
 </div>
 
-[(#TYPE|=={date}|oui)
+[(#DATE_COMPLETE|=={oui}|oui)
 [<div class="champ contenu_operateur[ (#OPERATEUR*|!={0000-00-00 00:00:00}|?{'',vide})]">
 	<label><:periode:champ_operateur_label:></label>
 	<span dir="#LANG_DIR" class="#EDIT{operateur} operateur">(#OPERATEUR)</span>
@@ -40,6 +40,20 @@
 	<span dir="#LANG_DIR" class="#EDIT{date_fin} date_fin">(#DATE_FIN|=={0000-00-00 00:00:00}|?{'',[(#DATE_FIN|affdate)]})</span>
 </div>]
 ]
+[(#DATE_COMPLETE|=={non}|oui)
+	<div class="champ contenu_date_debut">
+		<label><:dates_outils:champ_date_debut_label:></label>
+		<span dir="#LANG_DIR" class="#EDIT{date_debut_jour} date_debut_jour">[(#DATE_DEBUT_JOUR|sinon{*})]</span>/
+		<span dir="#LANG_DIR" class="#EDIT{date_debut_mois} date_debut_mois">[(#DATE_DEBUT_MOIS|sinon{*})]</span>/
+		<span dir="#LANG_DIR" class="#EDIT{date_debut_annee} date_debut_annee">[(#DATE_DEBUT_ANNEE|sinon{*})]</span>
+	</div>
+	<div class="champ contenu_date_fin">
+		<label><:dates_outils:champ_date_fin_label:></label>
+		<span dir="#LANG_DIR" class="#EDIT{date_fin_jour} date_fin_jour">[(#DATE_FIN_JOUR|sinon{*})]</span>/
+		<span dir="#LANG_DIR" class="#EDIT{date_fin_mois} date_fin_mois">[(#DATE_FIN_MOIS|sinon{*})]</span>/
+		<span dir="#LANG_DIR" class="#EDIT{date_fin_annee} date_fin_annee">[(#DATE_FIN_ANNEE|sinon{*})]</span>
+	</div>
+]
 
 [(#TYPE|=={jour_semaine}|oui)
 <div class="champ contenu_jour_debut[ (#JOUR_DEBUT*|strlen|?{'',vide})]">
@@ -55,6 +69,8 @@
 </div>
 ]
 
+
+
 [(#TYPE|=={jour_nombre}|oui)
 [<div class="champ contenu_operateur[ (#OPERATEUR*|!={0000-00-00 00:00:00}|?{'',vide})]">
 	<label><:periode:champ_operateur_label:></label>
@@ -66,20 +82,5 @@
 	<span dir="#LANG_DIR" class="#EDIT{jour_nombre} jour_nombre">(#JOUR_NOMBRE)</span>
 </div>]
 ]
-
-[<div class="champ contenu_jour[ (#JOUR*|strlen|?{'',vide})]">
-	<label><:periode:champ_jour_label:> : </label>
-	<span dir="#LANG_DIR" class="#EDIT{jour} jour">(#JOUR)</span>
-</div>]
-
-[<div class="champ contenu_mois[ (#MOIS*|strlen|?{'',vide})]">
-	<label><:periode:champ_mois_label:> : </label>
-	<span dir="#LANG_DIR" class="#EDIT{mois} mois">(#MOIS)</span>
-</div>]
-
-[<div class="champ contenu_annee[ (#ANNEE*|strlen|?{'',vide})]">
-	<label><:periode:champ_annee_label:> : </label>
-	<span dir="#LANG_DIR" class="#EDIT{annee} annee">(#ANNEE)</span>
-</div>]
 
 </BOUCLE_periode>

@@ -28,13 +28,15 @@ function formulaires_editer_periode_saisies_dist() {
 	// Les jours de mois.
 	$jours = [];
 	for ($i = 1; $i <= 31; $i++) {
-		$jours[] = $i;
+		$valeur = str_pad($i, 2, '0', STR_PAD_LEFT);
+		$jours[$valeur ] = $i;
 	}
 
 	// Les mopis d'une année.
 	$mois = [];
 	for ($i = 1; $i <= 12; $i++) {
-		$mois[] = $i;
+		$valeur = str_pad($i, 2, '0', STR_PAD_LEFT);
+		$mois[$valeur] = $i;
 	}
 
 
@@ -78,7 +80,8 @@ function formulaires_editer_periode_saisies_dist() {
 					'date' => _T('periode:type_date'),
 					'jour_semaine' => _T('periode:type_jour_semaine'),
 					//'jour_nombre' => _T('po_periode:type_jour_nombre'),
-				)
+				),
+				'defaut' => 'date',
 			),
 		),
 		array(
@@ -92,7 +95,7 @@ function formulaires_editer_periode_saisies_dist() {
 					'exclu' => _T('periode:choix_exclu_label'),
 					//'specifique' => _T('po_periode:choix_specifique_label'),
 				),
-				'afficher_si' => '@type@ == "date" || @type@ == "jour_semaine"',
+				'defaut' => 'coincide',
 			)
 		),
 		/*array(
@@ -110,9 +113,10 @@ function formulaires_editer_periode_saisies_dist() {
 				'obligatoire' => 'oui',
 				'nom' => 'date_complete',
 				'label' => _T('periode:champ_date_complete_label'),
-				'explication' => _T('periode:explication_date_complete_label'),
+				'valeur_oui' => 'oui',
+				'valeur_non' => 'non',
 				'afficher_si' => '@type@ == "date"',
-				'defaut' => 'on',
+				'defaut' => 'oui',
 			),
 		),
 		array(
@@ -120,7 +124,7 @@ function formulaires_editer_periode_saisies_dist() {
 			'options' => array(
 				'nom' => 'date_debut',
 				'label' => _T('dates_outils:champ_date_debut_label'),
-				'afficher_si' => '@type@ == "date" && @date_complete@ == "on"',
+				'afficher_si' => '@type@ == "date" && @date_complete@ != "non"',
 			)
 		),
 		/*array(
@@ -137,7 +141,7 @@ function formulaires_editer_periode_saisies_dist() {
 			'options' => array(
 				'nom' => 'date_fin',
 				'label' => _T('dates_outils:champ_date_fin_label'),
-				'afficher_si' => '@type@ == "date" && @date_complete@ == "on"',
+				'afficher_si' => '@type@ == "date" && @date_complete@ == "oui"',
 			)
 		),
 		[
@@ -145,7 +149,7 @@ function formulaires_editer_periode_saisies_dist() {
 			'options' => array(
 				'nom' => 'date_debut_selection',
 				'label' => _T('dates_outils:champ_date_debut_label'),
-				'afficher_si' => '@type@ == "date" && @date_complete@ == ""',
+				'afficher_si' => '@type@ == "date" && @date_complete@ == "non"',
 
 			),
 			'saisies' => [
@@ -181,7 +185,7 @@ function formulaires_editer_periode_saisies_dist() {
 			'options' => array(
 				'nom' => 'date_fin_selection',
 				'label' => _T('dates_outils:champ_date_fin_label'),
-				'afficher_si' => '@type@ == "date" && @date_complete@ == ""',
+				'afficher_si' => '@type@ == "date" && @date_complete@ == "non"',
 			),
 			'saisies' => [
 				[
@@ -316,6 +320,9 @@ function formulaires_editer_periode_charger_dist($id_periode = 'new', $retour = 
 function formulaires_editer_periode_verifier_dist($id_periode = 'new', $retour = '', $lier_trad = 0, $config_fonc = '', $row = array(), $hidden = '') {
 	$erreurs = array();
 
+	$type = _request('type');
+	$date_complete = _request('date_complete');
+
 	$verifier = charger_fonction('verifier', 'inc');
 
 	foreach (array('date_debut', 'date_fin') AS $champ) {
@@ -331,10 +338,37 @@ function formulaires_editer_periode_verifier_dist($id_periode = 'new', $retour =
 		}
 	}
 
+	$obligatoires = ['titre', 'type', 'criteres'];
+
+	// Type date
+	if ($type == 'date') {
+		if ($date_complete == 'non') {
+			if (!_request('date_debut_jour') and
+				!_request('date_debut_mois') and
+				!_request('date_debut_annee') and
+				!_request('date_fin_jour') and
+				!_request('date_fin_mois') and
+				!_request('date_fin_annee')) {
+				$erreurs['date_complete'] = _T('periode:erreur_dates_non_completes');
+			}
+		}
+		else {
+			if (!_request('date_debut') and !_request('date_debut')) {
+				$erreurs['date_debut'] = _T('periode:erreur_dates_un_minimum');
+				$erreurs['date_fin'] = _T('periode:erreur_dates_un_minimum');
+			}
+		}
+	}
+	// Type jour de la semaine.
+	else {
+		$obligatoires = array_merge($obligatoires, ['jour_debut', 'jour_fin']);
+	}
+
 	$erreurs += formulaires_editer_objet_verifier(
 		'periode', $id_periode,
-		array('titre', 'type', 'criteres')
+		$obligatoires
 	);
+
 
 	return $erreurs;
 }
