@@ -1,19 +1,20 @@
+.fieldset_date_debut_selection .editer-groupe,
+.fieldset_date_fin_selection .editer-groupe{
+	display: flex;
+	flex-wrap: nowrap;
+}
+
 .formulaire_spip .editer.editer_date_debut_jour,
-.formulaire_spip .editer.editer_date_debut_mois,
-.formulaire_spip .editer.editer_date_debut_annee,
-.formulaire_spip .editer.editer_date_fin_jour,
-.formulaire_spip .editer.editer_date_fin_mois,
-.formulaire_spip .editer.editer_date_fin_annee {
-	clear: none;
-	float: left;
-	padding-left: 135px;
+.formulaire_spip .editer.editer_date_fin_jour {
+	padding-right: 0;
 }
 
 .formulaire_spip .editer.editer_date_debut_mois,
 .formulaire_spip .editer.editer_date_debut_annee,
 .formulaire_spip .editer.editer_date_fin_mois,
 .formulaire_spip .editer.editer_date_fin_annee {
-	padding-left: 10px;
+	padding-right: 0;
+	padding-left: 0;
 }
 
 .formulaire_spip .editer.editer_date_debut_jour label,
