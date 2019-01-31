@@ -53,6 +53,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// T
 	'texte_ajouter_periode' => 'Ajouter une période',
 	'texte_changer_statut_periode' => 'Cette période est :',
+	'titre_choix_coincide' => 'Coïncidence',
+	'titre_choix_exclu' => 'Exclues',
 	'texte_creer_associer_periode' => 'Créer et associer une période',
 	'texte_definir_comme_traduction_periode' => 'Cette période est une traduction de la période numéro :',
 	'titre_langue_periode' => 'Langue de cette période',
