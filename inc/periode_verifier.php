@@ -77,8 +77,8 @@ function inc_periode_verifier_dist($id_periode, $contexte = array()) {
 					}
 					break;
 				case 'specifique' :
-					if(po_condition($date_debut_contexte, $operateur, $date_debut_periode) and
-					po_condition($date_fin_contexte, $operateur_2, $date_fin_periode)) {
+					if(periodes_condition($date_debut_contexte, $operateur, $date_debut_periode) and
+					periodes_condition($date_fin_contexte, $operateur_2, $date_fin_periode)) {
 							$applicable = TRUE;
 						}
 					break;
@@ -132,7 +132,7 @@ function inc_periode_verifier_dist($id_periode, $contexte = array()) {
 				$nombre_jours_contexte = $difference_date / (60 * 60 * 24);
 				$nombre_jours = $donnees_periode['jour_nombre'];
 
-				if (po_condition($nombre_jours_contexte, $operateur, $nombre_jours)) {
+				if (periodes_condition($nombre_jours_contexte, $operateur, $nombre_jours)) {
 					$applicable = TRUE;
 				}
 			}
@@ -144,7 +144,7 @@ function inc_periode_verifier_dist($id_periode, $contexte = array()) {
 }
 
 
-function po_condition($var1, $op, $var2) {
+function periodes_condition($var1, $op, $var2) {
 
 	switch ($op) {
 		case "=":
