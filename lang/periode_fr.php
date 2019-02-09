@@ -23,6 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'champ_mois_label' => 'Mois :',
 	'champ_operateur_2_label' => 'Operateur 2 :',
 	'champ_operateur_label' => 'Operateur :',
+	'champ_periode_label' => 'Période :',
 	'champ_titre_label' => 'Titre',
 	'champ_type_label' => 'Type :',
 	'choix_coincide_label' => 'Coïncidence (Période contient au moins une date du contexte)',
