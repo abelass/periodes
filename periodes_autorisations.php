@@ -4,7 +4,7 @@
  *
  * @plugin     Périodes
  * @copyright  2019
- * @author     Rainer
+ * @author     Rainer Müller
  * @licence    GNU/GPL v3
  * @package    SPIP\Periodes\Autorisations
  */

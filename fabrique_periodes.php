@@ -37,7 +37,7 @@ $data = array (
       0 => '',
     ),
     'version' => '1.0.0',
-    'auteur' => 'Rainer',
+    'auteur' => 'Rainer Müller',
     'auteur_lien' => 'https://websimple.be',
     'licence' => 'GNU/GPL v3',
     'categorie' => 'outil',
