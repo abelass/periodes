@@ -126,7 +126,7 @@ function inc_periode_verifier_dist($id_periode, $contexte = array()) {
 			break;
 		case 'jour_nombre':
 			include_spip('filtres/dates_outils');
-			$nombre_jours_contexte = dates_difference($date_debut_contexte, $date_fin_contexte), 'jour');
+			$nombre_jours_contexte = dates_difference($date_debut_contexte, $date_fin_contexte, 'jour');
 			if ($nombre_jours_contexte >= 0) {
 				if (periodes_condition($nombre_jours_contexte, $operateur, $donnees_periode['jour_nombre'])) {
 					$applicable = TRUE;
