@@ -18,7 +18,7 @@
 
 
 	<necessite nom="saisies" compatibilite="[2.28.0;]" />
-
+	<necessite nom="dates_outils" compatibilite="[1.0.9;]" />
 
 	<pipeline nom="autoriser" inclure="periodes_autorisations.php" />
 

@@ -125,14 +125,10 @@ function inc_periode_verifier_dist($id_periode, $contexte = array()) {
 			}
 			break;
 		case 'jour_nombre':
-			$fin = strtotime(date('Y-m-d', strtotime($date_fin_contexte)));
-			$debut = strtotime(date('Y-m-d', strtotime($date_debut_contexte)));
-			if ($fin >= $debut) {
-				$difference_date = $fin - $debut;
-				$nombre_jours_contexte = $difference_date / (60 * 60 * 24);
-				$nombre_jours = $donnees_periode['jour_nombre'];
-
-				if (periodes_condition($nombre_jours_contexte, $operateur, $nombre_jours)) {
+			include_spip('filtres/dates_outils');
+			$nombre_jours_contexte = dates_difference($date_debut_contexte, $date_fin_contexte), 'jour');
+			if ($nombre_jours_contexte >= 0) {
+				if (periodes_condition($nombre_jours_contexte, $operateur, $donnees_periode['jour_nombre'])) {
 					$applicable = TRUE;
 				}
 			}
