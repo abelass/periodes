@@ -16,6 +16,10 @@
 
 	<licence>GNU/GPL v3</licence>
 
+	<traduire module="periodes" reference="fr" gestionnaire="salvatore" />
+	<traduire module="periode" reference="fr" gestionnaire="salvatore" />
+	<traduire module="paquet-periodes" reference="fr" gestionnaire="salvatore" />
+
 
 	<necessite nom="saisies" compatibilite="[2.28.0;]" />
 	<necessite nom="dates_outils" compatibilite="[1.0.9;]" />
