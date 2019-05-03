@@ -43,5 +43,3 @@ Sélectionnez le jour de la semaine désiré
 Ce plugin est utilisé par les plugins suivants :
 - [Prix objets par périodes](https://plugins.spip.net/prix_objets_periodes.html)
 - [Objets restrictions périodes](https://plugins.spip.net/objets_restrictions_periodes.html)
-
-º
