@@ -1,23 +1,11 @@
 # Périodes
 Gestion de périodes
 
-
-
-
-
-Ensuite déterminez la période (date début/ fin ou bien jour début/fin)
-
-## Utilisation
-Ce plugin est utilisé par les plugins suivants :
-- [Périodes de prix](https://contrib.spip.net/Periodes-de-prix)
-- [Objets restrictions périodes](https://plugins.spip.net/objets_restrictions_periodes.html)
-
 ## Dépendances
 - [Saisies](https://plugins.spip.net/saisies.html)
 - [Dates outils](https://plugins.spip.net/dates_outils.html)
 
 ## Édition
-
 Définissez vos périodes sous Édition/Périodes
 
 Choisissez d'abord le type de période :
