@@ -5,7 +5,7 @@
 	etat="test"
 	compatibilite="[3.0.0;3.2.*]"
 	logo="prive/themes/spip/images/periodes-64.png"
-	documentation="https://github.com/abelass/periodes"
+	documentation="https://contrib.spip.net/Periodes"
 	schema="1.1.0"
 >
 
