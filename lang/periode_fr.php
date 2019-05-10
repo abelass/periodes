@@ -31,7 +31,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// E
 	'erreur_dates_non_completes' => 'Sélectionnez au moin un jour, mois ou année sous "Date début" ou "Date fin".',
 	'erreur_dates_un_minimum' => 'Il faut au moins un date début ou fin.',
-	'explication_date_complete_label' => 'Si non, permet de chosir jour, mois et année séparément. Util par example pour définir une période indépendament de l’année',
+	'explication_date_complete_label' => 'Si non, permet de chosir jour, mois et année séparément. Util par exemple pour définir une période indépendament de l’année.',
 
 	// I
 	'icone_creer_periode' => 'Créer une période',
